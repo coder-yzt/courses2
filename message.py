@@ -93,19 +93,19 @@ def get_today_course_list(weekday,current_week):
 def format_course_list(now_time,current_week,today_courses):
     today = datetime.datetime.strptime(now_time,"%y/%m/%d")
     w = ['','一','二','三','四','五','六','日']
-    result1 = "\n\n### 今天是{}月{}号，第{}周，星期{}\n\n".format(today.month,today.day,current_week,w[today.weekday()+1])
+    result1 = "### 今天是{}月{}号，第{}周，星期{}\n".format(today.month,today.day,current_week,w[today.weekday()+1])
     if today_courses["courses"] == []:
-        return result1+"-----------------------------------\n\n今天没有课！\n\n"
-    result2 = "今天的课有：\n\n-----------------------------------\n\n"
+        return result1+"-----------------------------------\n今天没有课！\n\n"
+    result2 = "今天的课有：\n-----------------------------------\n"
     courses = today_courses['courses']
     result3 = ""
     for course in courses:
         result3 += course["course_name"]
-        result3 += "\n\n"
-        result3 += "{}节\n\n".format(course["time"])
-        result3 += "周次:{}\n\n".format(course["week"])
+        result3 += "\n"
+        result3 += "{}节\n".format(course["time"])
+        result3 += "周次:{}\n".format(course["week"])
         result3 += "地点：{}".format(course["place"])
-        result3 += "\n\n-----------------------------------\n\n"
+        result3 += "\n-----------------------------------\n"
     return result1 + result2 + result3
 
 def get_message():
